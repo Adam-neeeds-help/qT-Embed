@@ -27,5 +27,6 @@ Item {
         source: img
         hue: Theme.svgHueShift
         saturation: Theme.accentSat - 1 // gray accent -> grayscale image
+        lightness: Theme.svgLightShift
     }
 }

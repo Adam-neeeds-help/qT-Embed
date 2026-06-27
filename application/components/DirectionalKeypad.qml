@@ -15,6 +15,14 @@ Item {
     width: 186
     height: 224
 
+    // Tint the white parts of the (black/white) d-pad with the chosen color.
+    // Multiply: white -> tint, black -> black. A white d-pad color leaves it as-is.
+    layer.enabled: Theme.dpadSat > 0
+    layer.effect: ShaderEffect {
+        property color tint: Theme.dpad
+        fragmentShader: "qrc:/assets/shaders/tint_multiply.frag.qsb"
+    }
+
     Rectangle {
         width: 168
         height: width

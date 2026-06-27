@@ -12,6 +12,7 @@ class Preferences : public QObject
     Q_PROPERTY(bool checkAppUpdates READ checkApplicationUpdates WRITE setCheckApplicationUpdates NOTIFY checkApplicationUpdatesChanged)
     Q_PROPERTY(bool showHiddenFiles READ showHiddenFiles WRITE setShowHiddenFiles NOTIFY showHiddenFilesChanged)
     Q_PROPERTY(QString accentColor READ accentColor WRITE setAccentColor NOTIFY accentColorChanged)
+    Q_PROPERTY(QString dpadColor READ dpadColor WRITE setDpadColor NOTIFY dpadColorChanged)
 
     Preferences(QObject *parent = nullptr);
 
@@ -33,6 +34,9 @@ public:
     QString accentColor() const;
     void setAccentColor(const QString &color);
 
+    QString dpadColor() const;
+    void setDpadColor(const QString &color);
+
     QUrl lastFolderUrl() const;
     void setLastFolderUrl(const QUrl &url);
 
@@ -43,6 +47,7 @@ signals:
     void showHiddenFilesChanged();
     void lastFolderUrlChanged();
     void accentColorChanged();
+    void dpadColorChanged();
 
 private:
     QSettings m_settings;

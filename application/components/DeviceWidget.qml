@@ -45,6 +45,7 @@ Item {
         source: flipperImage
         hue: Theme.svgHueShift
         saturation: Theme.accentSat - 1 // gray accent -> grayscale illustration
+        lightness: Theme.svgLightShift
     }
 
     AbstractButton {

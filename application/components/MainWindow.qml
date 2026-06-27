@@ -153,6 +153,23 @@ Item {
         width: 800 + border.width * 2
         height: 390 + border.width * 2
 
+        TextLabel {
+            id: versionLabel
+
+            anchors.top: parent.top
+            anchors.right: parent.right
+            anchors.margins: 10
+            anchors.rightMargin: 16
+
+            color: Theme.color.lightorange2
+            opacity: 0.5
+
+            font.family: "ProggySquareTT"
+            font.pixelSize: 16
+
+            text: "Adam"
+        }
+
         DeviceWidget {
             id: deviceWidget
             opacity: Backend.backendState !== ApplicationBackend.ScreenStreaming &&

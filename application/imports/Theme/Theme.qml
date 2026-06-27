@@ -13,6 +13,10 @@ QtObject {
     // Achromatic picks (grey/white) collapse to a clean monochrome theme.
     readonly property real accentHue: accent.hslHue >= 0 ? accent.hslHue : 0
     readonly property real accentSat: accent.hslSaturation
+    readonly property real accentLight: accent.hslLightness
+
+    // Brightness factor: 1.0 at the default accent lightness (0.65), scales the whole theme.
+    readonly property real lightFactor: accentLight / 0.65
 
     // Hue rotation applied to baked purple SVG assets so they follow the accent too.
     // (HueSaturation.hue: -1..1 maps to -360..360 degrees.)
@@ -23,10 +27,20 @@ QtObject {
         else if(d < -0.5) d += 1.0;
         return d;
     }
+    // Lightness offset for baked SVGs (HueSaturation.lightness: -1..1), 0 at default brightness.
+    readonly property real svgLightShift: Math.max(-1, Math.min(1, accentLight - 0.65))
 
-    // Build a themed shade: chosen hue, per-shade saturation scaled by the accent, fixed lightness.
+    // Separate color for the navigation d-pad. White (sat 0) keeps it black/white.
+    readonly property color dpad: Preferences.dpadColor
+    readonly property real dpadHue: dpad.hslHue >= 0 ? dpad.hslHue : 0
+    readonly property real dpadSat: dpad.hslSaturation
+
+    // Build a themed shade: chosen hue, per-shade saturation & lightness scaled by the accent.
     function shade(s, l) {
-        return Qt.hsla(root.accentHue, Math.min(1, s * root.accentSat), l, 1);
+        return Qt.hsla(root.accentHue,
+                       Math.min(1, s * root.accentSat),
+                       Math.max(0, Math.min(1, l * root.lightFactor)),
+                       1);
     }
 
     readonly property var color: QtObject {

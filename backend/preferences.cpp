@@ -8,6 +8,7 @@
 #define SHOW_HIDDEN_FILES_KEY (QStringLiteral("ShowHiddenFiles"))
 #define LAST_FOLDER_URL_KEY (QStringLiteral("LastFolderUrl"))
 #define ACCENT_COLOR_KEY (QStringLiteral("AccentColor"))
+#define DPAD_COLOR_KEY (QStringLiteral("DpadColor"))
 
 #define SET_DEFAULT_VALUE(key, value)\
     if(!m_settings.contains(key)) {\
@@ -23,6 +24,7 @@ Preferences::Preferences(QObject *parent):
     SET_DEFAULT_VALUE(SHOW_HIDDEN_FILES_KEY, false);
     SET_DEFAULT_VALUE(LAST_FOLDER_URL_KEY, QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
     SET_DEFAULT_VALUE(ACCENT_COLOR_KEY, QStringLiteral("#a64dff"));
+    SET_DEFAULT_VALUE(DPAD_COLOR_KEY, QStringLiteral("#ffffff"));
 }
 
 Preferences *Preferences::instance()
@@ -108,6 +110,21 @@ void Preferences::setAccentColor(const QString &color)
 
     m_settings.setValue(ACCENT_COLOR_KEY, color);
     emit accentColorChanged();
+}
+
+QString Preferences::dpadColor() const
+{
+    return m_settings.value(DPAD_COLOR_KEY).toString();
+}
+
+void Preferences::setDpadColor(const QString &color)
+{
+    if(color == dpadColor()) {
+        return;
+    }
+
+    m_settings.setValue(DPAD_COLOR_KEY, color);
+    emit dpadColorChanged();
 }
 
 QUrl Preferences::lastFolderUrl() const

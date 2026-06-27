@@ -149,5 +149,6 @@
         <file>components/MessageDialog.qml</file>
         <file>components/ThemeDialog.qml</file>
         <file>components/ThemedImage.qml</file>
+        <file>assets/shaders/tint_multiply.frag.qsb</file>
     </qresource>
 </RCC>
