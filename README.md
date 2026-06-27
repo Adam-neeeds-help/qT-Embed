@@ -1,25 +1,9 @@
-## qFlipper
+## qT-Embed
 
-### Graphical desktop application for updating [Flipper Zero](https://flipperzero.one/) firmware via PC
-qFlipper is completely open source and based on [Qt](https://www.qt.io/) framework. Runs on Windows, macOS, Linux.
-
-<img alt="qFlipper" width="450" src="https://cdn.flipperzero.one/qflipper_logo_with_connected_flipper.png" />
-
-## Download
-
-Download official qFlipper builds here: [update.flipperzero.one](https://update.flipperzero.one/)
-
-<a href="https://update.flipperzero.one"><img width="300" alt="download qFlipper Button" src="https://cdn.flipperzero.one/download_qFlipper_button.png" /></a>
-
-
+### Graphical desktop application for T-Embed Flipper zero Port
 ## Features
-* Update Flipper's firmware and supplemental data with a press of one button
-* Repair a broken firmware installation
 * Stream Flipper's display and control it remotely
-* Install firmware from a `.dfu` file
-* Backup and restore settings, progress and pairing data
-* Automatic self-update feature
-* Command line interface
+* Upload Files to your SD card
 
 ## Build from sources 
 ### Cloning
