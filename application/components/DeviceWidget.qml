@@ -17,6 +17,15 @@ Item {
 
     visible: opacity > 0
 
+    // Custom device illustration is authored in orange; rotate from that base hue.
+    readonly property color imgBase: "#ff8a2c"
+    readonly property real imgHueShift: {
+        var d = Theme.accentHue - imgBase.hslHue;
+        if(d > 0.5) d -= 1.0;
+        else if(d < -0.5) d += 1.0;
+        return d;
+    }
+
     Behavior on x {
         PropertyAnimation {
             easing.type: Easing.InOutQuad
@@ -34,16 +43,17 @@ Item {
     Image {
         id: flipperImage
         anchors.fill: parent
-        source: "qrc:/assets/gfx/images/flipper.svg"
-        sourceSize: Qt.size(360, 156)
+        source: "qrc:/assets/gfx/images/flipper-custom.png"
+        fillMode: Image.PreserveAspectFit
+        sourceSize: Qt.size(1165, 462)
         visible: false
     }
 
-    // Hue-rotate the baked illustration so it follows the theme accent.
+    // Hue-rotate the illustration so it follows the theme accent.
     HueSaturation {
         anchors.fill: flipperImage
         source: flipperImage
-        hue: Theme.svgHueShift
+        hue: control.imgHueShift
         saturation: Theme.accentSat - 1 // gray accent -> grayscale illustration
         lightness: Theme.svgLightShift
     }
@@ -72,6 +82,7 @@ Item {
 
     Image {
         id: defaultScreen
+        visible: false // custom illustration already includes its own screen art
 
         x: 93
         y: 26
@@ -84,7 +95,16 @@ Item {
 
     ScreenCanvas {
         id: screenCanvas
-        anchors.fill: defaultScreen
+
+        // Aligned to the custom illustration's screen. Rendered at 2x (crisp)
+        // then scaled down to fill the screen area (avoids the 1x integer snap).
+        x: 61
+        y: 34
+        width: 256
+        height: 128
+        // Non-uniform scale: fill the screen width and the screen height.
+        transform: Scale { origin.x: 0; origin.y: 0; xScale: 164 / 256; yScale: 88 / 128 }
+
         visible: Backend.screenStreamer.isEnabled &&
                  Backend.backendState > ApplicationBackend.WaitingForDevices &&
                  Backend.backendState < ApplicationBackend.ScreenStreaming
@@ -98,11 +118,11 @@ Item {
     ExpandWidget {
         id: expandWidget
 
-        x: 89
-        y: 22
+        x: 61
+        y: 34
 
-        width: 136
-        height: 73
+        width: 164
+        height: 88
 
         visible: screenCanvas.visible
         opacity: clickArea.hovered ? clickArea.down ? 0.9 : 1 : 0

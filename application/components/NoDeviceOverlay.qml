@@ -32,7 +32,7 @@ Item {
         y: 264
 
         color: Theme.color.lightorange2
-        text: qsTr("Connect your Flipper")
+        text: qsTr("Connect your T-Embed")
 
         font.family: "Born2bSportyV2"
         font.pixelSize: 48

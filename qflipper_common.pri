@@ -1,4 +1,4 @@
-NAME = qFlipper
+NAME = qtembed
 
 equals(QT_MAJOR_VERSION, 6): QT += core5compat
 

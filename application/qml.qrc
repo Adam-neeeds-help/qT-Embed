@@ -6,6 +6,7 @@
         <file>imports/Theme/Theme.qml</file>
         <file>imports/Theme/qmldir</file>
         <file>assets/gfx/images/flipper.svg</file>
+        <file>assets/gfx/images/flipper-custom.png</file>
         <file>components/MainButton.qml</file>
         <file>components/GridBackground.qml</file>
         <file>assets/gfx/images/typec.svg</file>
