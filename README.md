@@ -1,6 +1,6 @@
 ## qT-Embed
 
-### Graphical desktop application for T-Embed Flipper zero Port
+### Graphical desktop application for T-Embed Flipper zero Port https://github.com/Sor3nt/Flipper-Zero-ESP32-Port
 ## Features
 * Stream Flipper's display and control it remotely
 * Upload Files to your SD card
@@ -9,8 +9,7 @@
 ### Cloning
 Make sure to clone the project together with submodules: 
 ```sh
-git clone https://github.com/flipperdevices/qFlipper.git --recursive
-```
+git clone ----
 ### Windows
 
 Build requirements:
