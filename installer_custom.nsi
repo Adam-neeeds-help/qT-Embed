@@ -3,7 +3,7 @@ Name "T-Embed"
 OutFile "build\qT-EmbedSetup.exe"
 InstallDir "$PROGRAMFILES64\T-Embed"
 RequestExecutionLevel admin
-Icon "application\assets\icons\qtembed.ico"
+Icon "application\assets\icons\qTembedicon.ico"
 SetCompressor /solid lzma
 
 Page directory
