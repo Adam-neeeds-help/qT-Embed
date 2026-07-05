@@ -200,6 +200,8 @@ AbstractOverlay {
         id: updateButton
         action: updateButtonAction
 
+        visible: false
+
         x: Math.round(centerX - width / 2)
         y: 265
 
@@ -259,9 +261,7 @@ AbstractOverlay {
             }
         }
 
-        visible: Backend.firmwareUpdateState !== ApplicationBackend.Unknown &&
-                 Backend.firmwareUpdateState !== ApplicationBackend.Checking &&
-                 Backend.firmwareUpdateState !== ApplicationBackend.ErrorOccured
+        visible: false
     }
 
     LinkButton {
@@ -271,7 +271,28 @@ AbstractOverlay {
         anchors.top: updateButton.bottom
         anchors.topMargin: 5
 
+        visible: false
+
         action: installFromFileAction
+    }
+
+    MainButton {
+        id: interfaceButton
+        text: qsTr("Update")
+
+        width: 230
+        height: 48
+        font.pixelSize: 40
+
+        x: Math.round(centerX - width / 2)
+        y: 265
+
+        onClicked: Qt.openUrlExternally("https://sor3nt.github.io/interface.html")
+
+        ToolTip {
+            text: qsTr("Open the update interface")
+            visible: parent.hovered
+        }
     }
 
     Action {

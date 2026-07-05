@@ -70,6 +70,7 @@ RowLayout {
 
     ImageButton {
         id: minimizeButton
+        themed: true
 
         iconPath: control.iconPath
         iconName: "minimize"
@@ -79,6 +80,7 @@ RowLayout {
 
     ImageButton {
         id: closeButton
+        themed: true
         enabled: control.closeEnabled
 
         iconPath: control.iconPath

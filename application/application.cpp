@@ -159,7 +159,7 @@ void Application::initLogger()
 void Application::initStyles()
 {
 #ifdef Q_OS_LINUX
-    setWindowIcon(QIcon(":/assets/icons/qFlipper.ico"));
+    setWindowIcon(QIcon(":/assets/icons/qTembedicon-window.ico"));
 #endif
 
     QQuickWindow::setDefaultAlphaBuffer(true);

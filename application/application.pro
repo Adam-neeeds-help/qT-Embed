@@ -73,11 +73,14 @@ win32 {
             VERSION = $$GIT_VERSION
         }
 
+        # Strip a leading "v" (e.g. tag "v1.0") - not a valid RC FILEVERSION
+        VERSION = $$replace(VERSION, ^v, )
+
     } else: VERSION = 0.0.0
 }
 
 macx: ICON = assets/icons/$${NAME}.icns
-else:win32: RC_ICONS = assets/icons/$${NAME}.ico
+else:win32: RC_ICONS = assets/icons/qTembedicon.ico
 
 INCLUDEPATH += \
     $$PWD/../dfu \
