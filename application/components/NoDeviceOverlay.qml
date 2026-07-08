@@ -38,6 +38,33 @@ Item {
         font.pixelSize: 48
     }
 
+    // Optional manual COM-port override (defaults to "Auto (detect)").
+    ColumnLayout {
+        id: comPortPanel
+        x: 16
+        y: 14
+        width: 150
+        spacing: 2
+
+        TextLabel {
+            text: qsTr("COM port")
+            color: Theme.color.lightorange2
+            font.pixelSize: 18
+        }
+
+        ComboBox {
+            id: comCombo
+            Layout.fillWidth: true
+            font.pixelSize: 18
+
+            model: SerialPorts.ports
+            currentIndex: SerialPorts.selectedIndex
+
+            onActivated: SerialPorts.selectedIndex = index
+            onPressedChanged: if(pressed) SerialPorts.refresh()
+        }
+    }
+
     ThemedImage {
         id: spinner
 

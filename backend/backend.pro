@@ -102,6 +102,7 @@ SOURCES += \
     regioninfo.cpp \
     remotefilefetcher.cpp \
     serialfinder.cpp \
+    serialportcontroller.cpp \
     simpleserialoperation.cpp \
     tararchive.cpp \
     tarziparchive.cpp \
@@ -216,6 +217,7 @@ HEADERS += \
     remotefilefetcher.h \
     screenframe.h \
     serialfinder.h \
+    serialportcontroller.h \
     simpleserialoperation.h \
     tararchive.h \
     tarziparchive.h \

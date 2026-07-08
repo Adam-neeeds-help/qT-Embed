@@ -22,6 +22,7 @@
 
 #include "device/stm32wb55.h"
 #include "serialfinder.h"
+#include "serialportcontroller.h"
 
 Q_DECLARE_LOGGING_CATEGORY(CATEGORY_DEBUG)
 
@@ -103,6 +104,17 @@ void VCPDeviceInfoHelper::nextStateLogic()
 
 void VCPDeviceInfoHelper::findSerialPort()
 {
+    // If the user manually picked a COM port, use it directly and skip the
+    // USB-serial-number matching.
+    const auto override = SerialPortController::instance()->overridePort();
+    if(!override.isNull()) {
+        qCDebug(CATEGORY_DEBUG).noquote() << "Using manually selected serial port" << override.systemLocation();
+        m_deviceInfo.portInfo = override;
+        m_deviceInfo.systemLocation = override.systemLocation();
+        advanceState();
+        return;
+    }
+
     auto *finder = new SerialFinder(m_deviceInfo.usbInfo.serialNumber(), this);
 
     connect(finder, &SerialFinder::finished, this, [=](const QSerialPortInfo &portInfo) {

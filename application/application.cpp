@@ -17,6 +17,7 @@
 #include "deviceregistry.h"
 #include "screencanvas.h"
 #include "preferences.h"
+#include "serialportcontroller.h"
 #include "backenderror.h"
 #include "inputevent.h"
 #include "logger.h"
@@ -196,6 +197,7 @@ void Application::initQmlTypes()
 
     qmlRegisterSingletonInstance("QFlipper", 1, 0, "Logger", globalLogger);
     qmlRegisterSingletonInstance("QFlipper", 1, 0, "Preferences", globalPrefs);
+    qmlRegisterSingletonInstance("QFlipper", 1, 0, "SerialPorts", globalSerialPorts);
     qmlRegisterSingletonInstance("QFlipper", 1, 0, "Backend", &m_backend);
     qmlRegisterSingletonInstance("QFlipper", 1, 0, "App", this);
     qmlRegisterSingletonInstance("QFlipper", 1, 0, "SystemFileDialog", &m_fileDialog);
